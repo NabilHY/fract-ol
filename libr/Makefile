@@ -63,7 +63,7 @@ all: $(NAME)
 $(NAME): $(INCLUDE) $(OBJS) $(OBJS_LIBFT) $(OBJS_GNL)
 	@ar rcs $(NAME) $(OBJS) $(OBJS_LIBFT) $(OBJS_GNL)
 
-%.o: %.c
+%.o: %.c 
 	@$(CC) $(FLAGS) -I $(INCLUDE) -c $< -o $@
 
 clean:
