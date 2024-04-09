@@ -1,7 +1,7 @@
 CC = cc
 FLAGS = -Wall -Wextra -Werror
 ENTRY = fractol.c
-OBJS = $(SRCS:objs/.o=.c)
+OBJS = $(SRCS:.o=.c)
 LIB_AR = ./libr/libr.a
 MLX_MACOS = -framework Cocoa -framework OpenGL -framework IOKit
 MLX_INCLUDE = ./mlx/include/MLX42.h
@@ -22,9 +22,9 @@ $(LIB_AR):
 $(NAME):
 	$(CC) $(FLAGS) $(ENTRY) $(LIB_AR) $(MLX_MACOS) $(MLX_AR) $(GLFW)   -o $(NAME)
 
-./objs/%.o: %.c
-	mkdir -p objs
-	$(CC) $(FLAGS) -I$(INCLUDE) -c $< -o $@
+#./objs/%.o: %.c
+#	mkdir -p objs
+#	$(CC) $(FLAGS) -I$(INCLUDE) -c $< -o $@
 
 $(LIB_NAME):
 	make -C libr
@@ -32,3 +32,5 @@ lib_clean:
 	make clean -C libr
 lib_fclean: lib_clean
 	make fclean -C libr
+
+#cc fractol.c -framework Cocoa -framework OpenGL -framework IOKit ./mlx/build/libmlx42.a -lglfw -L/Users/nhayoun/.brew/opt/glfw/lib/
