@@ -61,6 +61,7 @@ INCLUDE = libr.h
 all: $(NAME)
 
 $(NAME): $(INCLUDE) $(OBJS) $(OBJS_LIBFT) $(OBJS_GNL)
+	printf "$(NAME) Archive Created"
 	@ar rcs $(NAME) $(OBJS) $(OBJS_LIBFT) $(OBJS_GNL)
 
 %.o: %.c 

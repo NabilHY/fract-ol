@@ -6,44 +6,28 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 04:48:42 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/09 02:55:04 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/11 20:01:32 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-//#include "fractol.h"
-#include <stdio.h>
+#include "fractol.h" 
 
-typedef struct s_complex
+int	main(int ac, char **av)
 {
-	//		x -- real
-	double real;
-	//		y -- imaginary
-	double i;
-} t_complex;
-
-int	main(void)
-{
-	t_complex	z;
-	//	point
-	t_complex	c;
-	double		tmp_real;
-	int			i;
-	
-	z.real = 0;
-	z.i = 0;
-
-	c.real = 5;
-	c.i = 2;
-	
-	while (i < 42)
+	t_fractal fractal;
+	if (((ac == 2) && (!ft_strncmp(av[1], "mandelbort", 10)))
+		|| ((ac == 4) && !ft_strncmp(av[1], "julia", 5)))
 	{
-		tmp_real = (z.real * z.real) - (z.i * z.i);
-		z.i = 2 * z.real * z.i;
-		z.real = tmp_real;
-		z.real += c.real;
-		z.i += c.i;
-		printf("%f %f\n", z.real, z.i);
-		i++;
+		fractal.name = av[1];
+		fractal_init(&fractal);
+		//fractal_render(&fractal);
+		mlx_loop(fractal.mlx_ptr);
 	}
+	else
+	{
+		ft_putstr_fd("Wrong Input!, Choose mandelbort or julia with it's read and imag. number \n", 0);
+		exit(0);
+	}
+	return (0);
 }
