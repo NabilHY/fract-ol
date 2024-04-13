@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 04:48:42 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/11 20:01:32 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/13 15:54:43 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@
 int	main(int ac, char **av)
 {
 	t_fractal fractal;
+
 	if (((ac == 2) && (!ft_strncmp(av[1], "mandelbort", 10)))
 		|| ((ac == 4) && !ft_strncmp(av[1], "julia", 5)))
 	{
 		fractal.name = av[1];
 		fractal_init(&fractal);
-		//fractal_render(&fractal);
+		fractal_render(&fractal);
 		mlx_loop(fractal.mlx_ptr);
 	}
 	else

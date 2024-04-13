@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 04:38:23 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/11 22:23:25 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/13 15:40:31 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,29 @@
 
 	#include "./MLX42/include/MLX42/MLX42.h"
 	#include "./libr/libr.h"
-	#define WIDTH 1920
-	#define HEIGHT 1080
-
-typedef struct s_img
-{
-	void	*img_ptr;
-	char	*pixels_ptr;
-	int		bpp;
-	int		endian;
-	int		line_len;
-}	t_img;
+	#define WIDTH 800
+	#define HEIGHT 800
+	/*colors*/
+	#define WHITE       0xFFFFFF
+	#define BLACK       0x000000
+	#define RED         0xFF0000
+	#define GREEN       0x00FF00
+	#define BLUE        0x0000FF
+	#define YELLOW      0xFFFF00
+	#define MAGENTA     0xFF00FF
+	#define CYAN        0x00FFFF
+	#define ORANGE      0xFFA500
+	#define PURPLE      0x800080
+	#define PINK        0xFFC0CB
+	#define GRAY        0x808080
 
 typedef struct s_fractal
 {
 	void	*mlx_ptr;
 	char	*name;
-	t_img	img;
+	mlx_image_t	*img;
+	double	escape_value;
+	int		iterations;
 }	t_fractal;
 
 typedef struct s_complex
@@ -42,6 +48,12 @@ typedef struct s_complex
 
 void	fractal_init(t_fractal *fractal);
 
-double	scaling_value(double omax, double imax, double imin, double ivalue);
+void	fractal_render(t_fractal *fractal);
+
+double scaling_value(double ival, double omin, double omax, double imin, double imax);
+
+t_complex sum_complex(t_complex z1, t_complex z2);
+
+t_complex sqrt_complex(t_complex z);
 
 #endif
