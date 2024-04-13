@@ -4,7 +4,7 @@ ENTRY = fractol.c
 SRCS = 	./srcs/math_utils.c \
 ./srcs/fractal_render.c \
 ./srcs/fractal_init.c
-OBJS = $(SRCS:.o=.c)
+OBJS = $(SRCS:.c=.o)
 LIB_AR = ./libr/libr.a
 LIB_INLUDE = ./libr/libr.h
 MLX_MACOS = -framework Cocoa -framework OpenGL -framework IOKit
@@ -24,8 +24,7 @@ $(LIB_AR):
 	make -C libr
 
 %.o: %.c
-	mkdir -p objs
-	$(CC) $(FLAGS) -I$(INCLUDE) -c $< -o $@
+	$(CC) $(FLAGS) -I$(INCLUDE) -I$(MLX_INCLUDE) -c $< -o $@
 
 $(NAME): $(OBJS) $(LIB_AR) $(MLX_AR)
 	$(CC) $(FLAGS) $(OBJS) $(ENTRY) $(LIB_AR) $(MLX_MACOS) $(MLX_AR) $(GLFW) -o $(NAME)

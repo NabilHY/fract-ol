@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 04:48:42 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/13 15:54:43 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/13 22:14:38 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int ac, char **av)
 	}
 	else
 	{
-		ft_putstr_fd("Wrong Input!, Choose mandelbort or julia with it's read and imag. number \n", 0);
+		ft_putstr_fd("Wrong Input!, Choose mandelbort or julia with it's real and imag. values \n", 0);
 		exit(0);
 	}
 	return (0);

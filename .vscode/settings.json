@@ -1,8 +1,0 @@
-{
-	"files.associations": {
-		"fractol.h": "c",
-		"mlx42.h": "c",
-		"libr.h": "c",
-		"typeinfo": "c"
-	}
-}

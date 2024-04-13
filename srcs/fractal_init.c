@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 15:24:19 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/13 16:47:58 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/13 22:13:45 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,55 @@
 void	data_init(t_fractal *fractal)
 {
 	fractal->escape_value = 4;
-	fractal->iterations = 5000;
+	fractal->iterations = 10;
+	fractal->zoom = 1.00;
+}
+
+void	my_scrollhook(double xdelta, double ydelta, void* param)
+{
+	t_fractal	*fractal;
+	(void)xdelta;
+
+	fractal = (t_fractal *)param;
+	if (ydelta > 0)
+		fractal->zoom *= 1.05;
+	else if (ydelta < 0)
+		fractal->zoom *= 0.95;
+	fractal_render(fractal);
+}
+
+void my_keyhook(mlx_key_data_t keydata, void* param)
+{
+	t_fractal	*fractal;
+
+	fractal = (t_fractal *)param;
+	if (keydata.key == MLX_KEY_UP && keydata.action == MLX_PRESS)
+		fractal->y_shift += (0.5 * fractal->zoom);
+	if (keydata.key == MLX_KEY_DOWN && keydata.action == MLX_PRESS)
+		fractal->y_shift -= (0.5 * fractal->zoom);
+	if (keydata.key == MLX_KEY_LEFT && keydata.action == MLX_PRESS)
+		fractal->x_shift -= (0.5 * fractal->zoom);
+	if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_PRESS)
+		fractal->x_shift += (0.5 * fractal->zoom);
+	if (keydata.key == MLX_KEY_KP_ADD && keydata.action == MLX_PRESS)
+		fractal->iterations += 10;
+	if (keydata.key == MLX_KEY_KP_SUBTRACT && keydata.action == MLX_PRESS)
+	{
+		if (fractal->iterations >= 20)
+			fractal->iterations -= 10;
+	}
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+	{
+		mlx_terminate(fractal->mlx_ptr);
+		exit(0);
+	}
+	fractal_render(fractal);
+}
+
+void	events_init(t_fractal *fractal)
+{
+	mlx_scroll_hook(fractal->mlx_ptr, &my_scrollhook, (void *)fractal);
+	mlx_key_hook(fractal->mlx_ptr, &my_keyhook, (void *)fractal);
 }
 
 void	fractal_init(t_fractal *fractal)
@@ -30,5 +78,6 @@ void	fractal_init(t_fractal *fractal)
 		free(fractal->mlx_ptr);
 	//	ft_error();
 	}
+	events_init(fractal);
 	data_init(fractal);
 }

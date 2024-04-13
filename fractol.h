@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 04:38:23 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/13 15:40:31 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/13 22:15:00 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ typedef struct s_fractal
 	mlx_image_t	*img;
 	double	escape_value;
 	int		iterations;
+	double		x_shift;
+	double		y_shift;
+	double		zoom;
 }	t_fractal;
 
 typedef struct s_complex
