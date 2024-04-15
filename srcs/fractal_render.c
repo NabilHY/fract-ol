@@ -6,25 +6,39 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 21:10:52 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/13 22:14:29 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/15 15:42:52 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
-void	handle_mandelbort_pixel(int x, int y, t_fractal *fractal)
+void	cmplx_initial_points(t_complex *c, t_complex *z, t_fractal *fractal, int x, int y)
+{
+	if (!ft_strncmp(fractal->name, "julia", 5))
+	{
+		z->x = (scaling_value(x, -2, +2, 0, WIDTH) * fractal->zoom) + fractal->x_shift;
+		z->y = (scaling_value(y, 2, -2, 0, HEIGHT) * fractal->zoom) + fractal->y_shift;
+		c->x = fractal->x_julia;
+		c->y = fractal->y_julia;
+	}
+	else
+	{
+		z->x = 0;
+		z->y = 0;
+		c->x = (scaling_value(x, -2, +2, 0, WIDTH) * fractal->zoom) + fractal->x_shift;
+		c->y = (scaling_value(y, 2, -2, 0, HEIGHT) * fractal->zoom) + fractal->y_shift;
+	}
+}
+
+void	handle_pixel(int x, int y, t_fractal *fractal)
 {
 	t_complex	z;
 	t_complex	c;
 	int			i;
 	int			color;
 
-	z.x = 0.0;
-	z.y = 0.0;
-	
 	i = 0;
-	c.x = (scaling_value(x, -2, +2, 0, WIDTH) * fractal->zoom) + fractal->x_shift;
-	c.y = (scaling_value(y, 2, -2, 0, HEIGHT) * fractal->zoom) + fractal->y_shift;
+	cmplx_initial_points(&c, &z, fractal, x, y);
 	while (i < fractal->iterations)
 	{
 		z = sum_complex(sqrt_complex(z), c);
@@ -43,7 +57,6 @@ void	fractal_render(t_fractal *fractal)
 {
 	int		x;
 	int		y;
-	
 
 	y = -1;
 	while (++y < HEIGHT)
@@ -51,7 +64,7 @@ void	fractal_render(t_fractal *fractal)
 		x = -1;
 		while (++x < WIDTH)
 		{
-			handle_mandelbort_pixel(x, y, fractal);
+			handle_pixel(x, y, fractal);
 		}
 	}
 	mlx_image_to_window(fractal->mlx_ptr, fractal->img, 0, 0);

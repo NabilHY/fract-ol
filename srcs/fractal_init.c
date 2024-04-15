@@ -6,11 +6,13 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 15:24:19 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/13 22:13:45 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/15 15:19:56 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
+#include <stdio.h>
+
 
 void	data_init(t_fractal *fractal)
 {
@@ -32,7 +34,20 @@ void	my_scrollhook(double xdelta, double ydelta, void* param)
 	fractal_render(fractal);
 }
 
-void my_keyhook(mlx_key_data_t keydata, void* param)
+void	my_cursorhook(double xpos, double ypos, void *param)
+{
+	t_fractal *fractal;
+
+	fractal = (t_fractal *)param;
+	if ((int)xpos % 10 == 0 || (int)ypos % 10 == 0)
+	{
+		fractal->x_julia = (scaling_value(xpos, -2, +2, 0, WIDTH) * fractal->zoom) + fractal->x_shift;
+		fractal->y_julia = (scaling_value(ypos, -2, +2, 0, HEIGHT) * fractal->zoom) + fractal->y_shift;
+		fractal_render(fractal);
+	}
+}
+
+void	my_keyhook(mlx_key_data_t keydata, void* param)
 {
 	t_fractal	*fractal;
 
@@ -64,6 +79,7 @@ void	events_init(t_fractal *fractal)
 {
 	mlx_scroll_hook(fractal->mlx_ptr, &my_scrollhook, (void *)fractal);
 	mlx_key_hook(fractal->mlx_ptr, &my_keyhook, (void *)fractal);
+	mlx_cursor_hook(fractal->mlx_ptr, &my_cursorhook, (void *)fractal);
 }
 
 void	fractal_init(t_fractal *fractal)
