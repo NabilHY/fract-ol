@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 21:10:52 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/15 15:42:52 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/15 19:28:21 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ void	handle_pixel(int x, int y, t_fractal *fractal)
 		z = sum_complex(sqrt_complex(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > fractal->escape_value)
 		{
-			color = scaling_value(i, BLACK, WHITE, 0, fractal->iterations);
+			color = scaling_value(i, BLUE, GREEN, BLACK, fractal->iterations);
 			mlx_put_pixel(fractal->img, x,y ,color);
 			return ;
 		}
-		mlx_put_pixel(fractal->img, x,y, BLUE);
+		mlx_put_pixel(fractal->img, x,y, RED);
 		i++;
 	}
 }
