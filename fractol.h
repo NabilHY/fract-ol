@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 04:38:23 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/15 18:14:38 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/16 19:07:01 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@
 	#define PURPLE      0x800080
 	#define PINK        0xFFC0CB
 	#define GRAY        0x808080
+	
+	#define MAJESTIC_1  0x5A175D
+	#define MAJESTIC_2  0x67074E
+	#define MAJESTIC_3  0xDD9933
+	#define MAJESTIC_4  0xBBBBBB
+	#define MAJESTIC_5  0xAAAAAA
 
 typedef struct s_fractal
 {
