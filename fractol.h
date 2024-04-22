@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 04:38:23 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/16 19:07:01 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/21 21:40:12 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,7 @@
 	#define WIDTH 800
 	#define HEIGHT 800
 	/*colors*/
-	#define WHITE       0xFFFFFF
-	#define BLACK       0x000000
-	#define RED         0xFF0000
-	#define GREEN       0x00FF00
-	#define BLUE        0x0000FF
-	#define YELLOW      0xFFFF00
-	#define MAGENTA     0xFF00FF
-	#define CYAN        0x00FFFF
-	#define ORANGE      0xFFA500
-	#define PURPLE      0x800080
-	#define PINK        0xFFC0CB
-	#define GRAY        0x808080
-	
-	#define MAJESTIC_1  0x5A175D
-	#define MAJESTIC_2  0x67074E
-	#define MAJESTIC_3  0xDD9933
-	#define MAJESTIC_4  0xBBBBBB
-	#define MAJESTIC_5  0xAAAAAA
+	#define ERR_MSG "Invalid Input Try:\n->./fractol mandelbrot\n->./fractol julia <real(double)> <imag(double)\n>"
 
 typedef struct s_fractal
 {
@@ -50,6 +33,12 @@ typedef struct s_fractal
 	double		zoom;
 	double		x_julia;
 	double		y_julia;
+	double		cursor_x;
+	double		cursor_y;
+	double		x_min;
+	double		x_max;
+	double		y_min;
+	double		y_max;
 }	t_fractal;
 
 typedef struct s_complex
@@ -58,22 +47,40 @@ typedef struct s_complex
 	double	y;
 }	t_complex;
 
+typedef	struct s_coor
+{
+	int		x;
+	int		y;
+}	t_coor;
+
 void		fractal_init(t_fractal *fractal);
 
 void		fractal_render(t_fractal *fractal);
 
-double 		scaling_value(double ival, double omin, double omax, double imin, double imax);
+double	scaling_value(double ival, double omin, double omax, double imax);
 
 t_complex 	sum_complex(t_complex z1, t_complex z2);
 
 t_complex 	sqrt_complex(t_complex z);
 
-void		ft_putstr(char *s);
+void		ft_putstr_err(char *s);
+
+int			ft_double(char *str);
 
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 
 void		ft_tolower(char *str);
 
 double		ft_atod(char *str);
+
+int			ft_strlen(char *str);
+
+void		apply_zoom(t_fractal *fractal, double zoom);
+
+void	cursor_coor(double xpos, double ypos, void *param);
+
+void	scrollhook(double xdelta, double ydelta, void *param);
+
+void	keyhook(mlx_key_data_t keydata, void *param);
 
 #endif
