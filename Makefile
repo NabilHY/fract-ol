@@ -26,13 +26,13 @@ MLXLIB = ./MLX42/lib/MLX42
 FSANITIZE= -g -fsanitize=address
 NAME = fractol
 NAME_BON = fractol_bonus
-MLX_BUILD = ./MLX42/build/libmlx42.a
 
 all: $(NAME)
 
 bonus : $(NAME_BON)
 
-$(MLX_BUILD):
+$(MLX_AR):
+	git submodule init
 	git submodule update
 	cmake -B MLX42/build MLX42
 	cmake --build MLX42/build -j4
@@ -40,10 +40,10 @@ $(MLX_BUILD):
 %.o: %.c $(MLX_INCLUDE)
 	$(CC) $(FLAGS) -I$(INCLUDE) -I$(MLX_INCLUDE) -c $< -o $@
 
-$(NAME): $(MLX_BUILD) $(OBJS) $(MLX_AR)
+$(NAME): $(MLX_AR) $(OBJS)
 	$(CC) $(FLAGS) $(OBJS) $(ENTRY) $(MLX_MACOS) $(MLX_AR) $(GLFW) -o $(NAME)
 
-$(NAME_BON): $(MLX_BUILD) $(OBJS_BON) $(MLX_AR)
+$(NAME_BON): $(MLX_AR) $(OBJS_BON)
 	$(CC) $(FLAGS) $(OBJS_BON) $(ENTRY_BON) $(MLX_MACOS) $(MLX_AR) $(GLFW) -o $(NAME_BON)
 
 
