@@ -14,7 +14,6 @@ SRCS_BON = ./bonus/srcs/fractal_init_bonus.c \
 ./bonus/srcs/parsing_utils_bonus.c \
 ./bonus/srcs/fractals_events.c
 
-
 OBJS = $(SRCS:.c=.o)
 OBJS_BON = $(SRCS_BON:.c=.o)
 MLX_MACOS = -framework Cocoa -framework OpenGL -framework IOKit
@@ -54,7 +53,6 @@ $(NAME): $(MLX_BUILD) $(OBJS) $(INCLUDE)
 $(NAME_BON): $(MLX_BUILD) $(OBJS_BON) $(INCLUDE)
 	@$(CC) $(FLAGS) $(OBJS_BON) $(ENTRY_BON) $(MLX_MACOS) $(MLX_AR) $(GLFW) -o $(NAME_BON)
 	@echo "Program Compiled successfully."
-
 
 clean:
 	rm -rf $(OBJS) $(OBJS_BON)
