@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 17:02:43 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/24 15:40:39 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/24 21:05:05 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ typedef struct s_fractal
 
 typedef struct s_complex
 {
-	double		x;
-	double		y;
+	double		real;
+	double		imag;
 }				t_complex;
 
 typedef struct s_coor

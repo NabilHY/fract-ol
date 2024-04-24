@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 22:18:29 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/23 17:01:43 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/24 21:08:51 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ t_complex	sum_complex(t_complex z1, t_complex z2)
 {
 	t_complex	res;
 
-	res.x = z1.x + z2.x;
-	res.y = z1.y + z2.y;
+	res.real = z1.real + z2.real;
+	res.imag = z1.imag + z2.imag;
 	return (res);
 }
 
@@ -44,7 +44,7 @@ t_complex	sqrt_complex(t_complex z)
 {
 	t_complex	res;
 
-	res.x = (z.x * z.x) - (z.y * z.y);
-	res.y = 2 * z.x * z.y;
+	res.real = (z.real * z.real) - (z.imag * z.imag);
+	res.imag = 2 * z.real * z.imag;
 	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 21:10:52 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/24 17:00:24 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/24 21:02:47 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,20 @@ void	cmplx_initial_points(t_complex *c, t_complex *z,
 {
 	if (!ft_strncmp(fractal->name, "julia", 5))
 	{
-		z->x = (scaling_value(coor->x, -2, +2, WIDTH)
+		z->real = (scaling_value(coor->x, -2, +2, WIDTH)
 				* fractal->zoom) + fractal->x_shift;
-		z->y = (scaling_value(coor->y, +2, -2, HEIGHT)
+		z->imag = (scaling_value(coor->y, +2, -2, HEIGHT)
 				* fractal->zoom) + fractal->y_shift;
-		c->x = fractal->x_julia;
-		c->y = fractal->y_julia;
+		c->real = fractal->x_julia;
+		c->imag = fractal->y_julia;
 	}
 	else
 	{
-		z->x = 0;
-		z->y = 0;
-		c->x = (scaling_value(coor->x, -2, +2, WIDTH)
+		z->real = 0;
+		z->imag = 0;
+		c->real = (scaling_value(coor->x, -2, +2, WIDTH)
 				* fractal->zoom) + fractal->x_shift;
-		c->y = (scaling_value(coor->y, 2, -2, HEIGHT)
+		c->imag = (scaling_value(coor->y, 2, -2, HEIGHT)
 				* fractal->zoom) + fractal->y_shift;
 	}
 }
@@ -52,7 +52,7 @@ void	handle_pixel(t_coor *coor, t_fractal *fractal)
 	while (i < fractal->iterations)
 	{
 		z = sum_complex(sqrt_complex(z), c);
-		if ((z.x * z.x) + (z.y * z.y) > fractal->escape_value)
+		if ((z.real * z.real) + (z.imag * z.imag) > fractal->escape_value)
 		{
 			color = scaling_value(i,
 					get_rgba(0, 0, 0, 255),
