@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 04:48:42 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/24 15:39:05 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/24 16:58:14 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ int	main(int ac, char **av)
 		|| (((ac == 4) && 
 				!ft_strncmp(av[1], "julia", 5))
 			&& ft_strlen(av[1]) == 5 
-			&& ft_double(av[3]) && ft_double(av[2]))
-		|| ((ac == 2) && !ft_strncmp(av[1], "burning_ship", 12)))
+			&& ft_double(av[3]) && ft_double(av[2])))
 	{
 		if (!ft_strncmp(av[1], "julia", 5))
 		{

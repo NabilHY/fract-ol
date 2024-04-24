@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 15:24:19 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/23 17:07:49 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/24 17:33:54 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,17 @@ void	events_init(t_fractal *fractal)
 void	fractal_init(t_fractal *fractal)
 {
 	fractal->mlx_ptr = mlx_init(WIDTH, HEIGHT, fractal->name, 0);
+	if (!fractal->mlx_ptr)
+	{
+		ft_putstr_err("MLX Window Failure");
+		exit(EXIT_FAILURE);
+	}
 	fractal->img = mlx_new_image(fractal->mlx_ptr, WIDTH, HEIGHT);
-	if (!fractal->img)
+	if (!fractal->img || (mlx_image_to_window(fractal->mlx_ptr , fractal->img, 0, 0) < 0))
 	{
 		mlx_terminate(fractal->mlx_ptr);
-		free(fractal->mlx_ptr);
+		ft_putstr_err("MLX Image Failure");
+		exit(EXIT_FAILURE);
 	}
 	events_init(fractal);
 	data_init(fractal);
