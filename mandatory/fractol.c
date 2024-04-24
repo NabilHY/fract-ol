@@ -6,11 +6,11 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 04:48:42 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/21 21:48:22 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/23 17:01:56 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fractol.h"
+#include "fractol.h"
 
 void	parce_name(char **av, t_fractal *fractal)
 {

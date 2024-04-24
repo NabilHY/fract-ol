@@ -6,11 +6,11 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 17:58:45 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/21 14:53:29 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/23 17:01:48 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../fractol.h"
+#include "../fractol.h"
 
 int	ft_atoi(char *str)
 {

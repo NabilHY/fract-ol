@@ -5,29 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/06 04:38:23 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/21 21:40:12 by nhayoun          ###   ########.fr       */
+/*   Created: 2024/04/23 17:00:06 by nhayoun           #+#    #+#             */
+/*   Updated: 2024/04/24 12:44:02 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 #define FRACTOL_H
 
-	#include "./MLX42/include/MLX42/MLX42.h"
+	#include "../MLX42/include/MLX42/MLX42.h"
 	# include <stdlib.h>
 	# include <unistd.h>
+	# include <math.h>
 	#define WIDTH 800
 	#define HEIGHT 800
-	/*colors*/
-	#define ERR_MSG "Invalid Input Try:\n->./fractol mandelbrot\n->./fractol julia <real(double)> <imag(double)\n>"
+	#define ERR_MSG "Invalid Input Try:\n->./fractol mandelbrot\n->./fractol julia <real(double)> <imag(double)>\n"
 
 typedef struct s_fractal
 {
-	void	*mlx_ptr;
-	char	*name;
+	void		*mlx_ptr;
+	char		*name;
 	mlx_image_t	*img;
-	double	escape_value;
-	int		iterations;
+	double		escape_value;
+	int			iterations;
 	double		x_shift;
 	double		y_shift;
 	double		zoom;

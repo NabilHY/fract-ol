@@ -6,12 +6,11 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 21:10:52 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/21 21:38:55 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/23 17:08:03 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../fractol.h"
-#include <math.h>
+#include "../fractol_bonus.h"
 
 int	get_rgba(int r, int g, int b, int a)
 {
@@ -53,12 +52,8 @@ void	handle_pixel(t_coor *coor, t_fractal *fractal)
 	while (i < fractal->iterations)
 	{
 		if (!ft_strncmp(fractal->name, "burning_ship", 12))
-		{
 			z = (t_complex){fabs(z.x), fabs(z.y)};
-			z = sum_complex(sqrt_complex(z), c);
-		}
-		else
-			z = sum_complex(sqrt_complex(z), c);
+		z = sum_complex(sqrt_complex(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > fractal->escape_value)
 		{
 			color = i * get_rgba(255, 240, 0, 255);

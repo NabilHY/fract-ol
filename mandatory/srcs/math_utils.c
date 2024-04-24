@@ -6,11 +6,11 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 22:18:29 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/18 12:50:00 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/23 17:01:43 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../fractol.h"
+#include "../fractol.h"
 
 /* Function to calculate the scaling 
 value based on the input and output ranges*/

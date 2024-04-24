@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractals_events.c                                  :+:      :+:    :+:   */
+/*   fractals_events_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:43:40 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/21 21:41:58 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/24 13:26:09 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../fractol.h"
+#include "../fractol_bonus.h"
 
 void	apply_zoom(t_fractal *fractal, double zoom)
 {

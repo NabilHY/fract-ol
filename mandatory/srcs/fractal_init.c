@@ -6,11 +6,11 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 15:24:19 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/21 11:59:41 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/23 17:01:37 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../fractol.h"
+#include "../fractol.h"
 
 void	data_init(t_fractal *fractal)
 {
