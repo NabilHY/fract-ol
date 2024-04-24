@@ -6,7 +6,7 @@
 /*   By: nhayoun <nhayoun@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:43:40 by nhayoun           #+#    #+#             */
-/*   Updated: 2024/04/24 13:26:09 by nhayoun          ###   ########.fr       */
+/*   Updated: 2024/04/24 17:41:02 by nhayoun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	keyhook_handler(mlx_key_data_t keydata, t_fractal *fractal)
 	else if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_RELEASE)
 	{
 		mlx_terminate(fractal->mlx_ptr);
-		exit(0);
+		exit(EXIT_SUCCESS);
 	}
 	else
 		return ;
